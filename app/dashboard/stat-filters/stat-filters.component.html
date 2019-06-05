@@ -1,0 +1,29 @@
+<section class="card">
+  <div class="card-content">
+    <div class="card-title">Employee Details</div>
+    <form [formGroup]="filters" (ngSubmit)="submit()">
+      <div class="three-across">
+        <div>
+          <label for="title">Video Title</label>
+          <input id="title" type="text" formControlName="title">
+          <div *ngIf="filters.get('title')?.invalid && filters.get('title')?.touched">
+            Please enter a title
+          </div>
+        </div>
+        <div>
+          <label for="author">Video Author</label>
+          <input id="author" type="text" formControlName="author">
+          <div *ngIf="filters.get('author')?.invalid && filters.get('author')?.touched">
+            Please enter an author
+          </div>
+        </div>
+      </div>
+      <button class="btn" 
+        [disabled]="!filters.valid" 
+        [class.disabled]="!filters.valid"
+      >Save</button>
+    </form>
+  </div>
+</section>
+
+<pre>{{filters.value | json}}</pre>
